@@ -20,44 +20,44 @@
                     },
                 },
             },
-            screens: {
-                'sm': {
-                    'min': '280px',
-                    'max': '767px'
-                },
-                // => @media (min-width: 640px and max-width: 767px) { ... }
+            // screens: {
+            //     'sm': {
+            //         'min': '280px',
+            //         'max': '767px'
+            //     },
+            //     // => @media (min-width: 640px and max-width: 767px) { ... }
 
-                'md': {
-                    'min': '768px',
-                    'max': '1023px'
-                },
-                // => @media (min-width: 768px and max-width: 1023px) { ... }
+            //     'md': {
+            //         'min': '768px',
+            //         'max': '1023px'
+            //     },
+            //     // => @media (min-width: 768px and max-width: 1023px) { ... }
 
-                'lg': {
-                    'min': '1024px',
-                    'max': '1279px'
-                },
-                // => @media (min-width: 1024px and max-width: 1279px) { ... }
+            //     'lg': {
+            //         'min': '1024px',
+            //         'max': '1279px'
+            //     },
+            //     // => @media (min-width: 1024px and max-width: 1279px) { ... }
 
-                'xl': {
-                    'min': '1280px',
-                    'max': '1535px'
-                },
-                // => @media (min-width: 1280px and max-width: 1535px) { ... }
+            //     'xl': {
+            //         'min': '1280px',
+            //         'max': '1535px'
+            //     },
+            //     // => @media (min-width: 1280px and max-width: 1535px) { ... }
 
-                '2xl': {
-                    'min': '1536px'
-                },
-                // => @media (min-width: 1536px) { ... }
-            }
+            //     '2xl': {
+            //         'min': '1536px'
+            //     },
+            //     // => @media (min-width: 1536px) { ... }
+            // }
         };
     </script>
-    <title>LaraGigs | Find Laravel Jobs & Projects</title>
+    <title>GiGi's Garage</title>
 </head>
 
-<body class="mb-48">
+<body>
     <nav class="flex justify-between items-center mb-4">
-        <a href="index.html"><img class="w-24" src="images/logo.png" alt="" class="logo" /></a>
+        <a href="index.html"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
         <ul class="flex space-x-6 mr-6 text-lg">
             <li>
                 <a href="register.html" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
@@ -68,11 +68,14 @@
             </li>
         </ul>
     </nav>
+
     <main>
         @yield('content')
+    </main>
+
         <footer
-            class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-slate-500 text-white h-24 mt-24 opacity-90 md:justify-center">
-            <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
+            class="relative bottom-0 left-0 w-full flex items-center justify-start font-bold bg-slate-500 text-white h-24 mt-24 opacity-90 md:justify-center">
+            <p class="ml-2 w-56 md:w-auto lg:w-auto">Copyright &copy; 2022, All Rights reserved</p>
 
             <a href="create.html" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
         </footer>

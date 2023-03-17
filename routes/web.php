@@ -14,19 +14,19 @@ use App\Models\Car;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/cars', function () {
+Route::get('/', function () {
     return view('cars', [
         'heading' => 'Cars',
         'listings' => Car::all()
     ]);
 });
 
-Route::get('/cars/{id}', function($id) {
+Route::get('/cars/{listing}', function(Car $listing ) {
     return view('car', [
-        'listing' => Car::find($id)
+        'listing' => $listing
     ]);
 });
