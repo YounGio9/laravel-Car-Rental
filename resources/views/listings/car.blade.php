@@ -1,10 +1,8 @@
-@extends('layout')
-
-@section('content')
+<x-layout>
     <div class="mx-4">
         <a href="/" class="inline-block text-black ml-4 mb-4"><i class="fa-solid fa-arrow-left"></i> Back
         </a>
-        <div class="bg-gray-50 border border-gray-200 p-10 rounded">
+        <x-card>
             <div class="flex flex-col items-center justify-center text-center">
                 <img class="w-48 mr-6 mb-6" src="images/acme.png" alt="" />
                 <img class="lg:w-1/2" src="{{ asset('images/noimage.jpeg') }}" alt="">
@@ -32,13 +30,13 @@
                         </p>
 
                         <a href="mailto:test@test.com"
-                            class="block bg-slate-600 text-white mt-6 py-2 font-bold rounded-xl hover:opacity-80"><i
+                            class="block md:w-[70%] md:m-auto bg-slate-600 text-white mt-6 py-2 font-bold rounded-xl hover:opacity-80"><i
                                 class="fa-solid fa-tag"></i>
                             Rent car</a>
 
                     </div>
                 </div>
             </div>
-        </div>
+        </x-card>
     </div>
-@endsection
+</x-layout>
