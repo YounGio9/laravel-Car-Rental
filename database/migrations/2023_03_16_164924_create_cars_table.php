@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('picture')->nullable();
             $table->string('brand');
-            $table->string('rentalId')->nullable();
+            $table->foreignId('rental_id')->nullable()->constrained()->onDelete('cascade');
             $table->longText('description');
             $table->integer('price');
             $table->timestamps();

@@ -16,4 +16,8 @@ class Car extends Model
         if ($filters['search'] ?? false)
             $query->where('name', 'like', '%' . request('search') . '%');
     }
+
+    public function rental() {
+        return $this->belongsTo(Rental::class, 'rental_id');
+    }
 }

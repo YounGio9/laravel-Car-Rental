@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Car;
 
+use App\Models\Car;
+use App\Models\Rental;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CarController extends Controller
@@ -14,17 +16,20 @@ class CarController extends Controller
         ]);
     }
 
-    public function find(Car $listing) {
+    public function find(Car $listing)
+    {
         return view('listings.car', [
             'listing' => $listing
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
         return view('listings.create');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $formFields = $request->validate([
             'name' => 'required',
             'brand' => 'required',
@@ -32,22 +37,67 @@ class CarController extends Controller
             'description' => 'required'
         ]);
 
-        if($request->hasFile('picture')) {
+        if ($request->hasFile('picture')) {
             $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
         }
+
+        // $formFields['rental_id'] = 0;
 
         Car::create($formFields);
 
         return redirect('/')->with('message', 'Voiture ajoutée au garage avec succès!');
-
-//         // if($request->hasFile('logo')) {
-//         //     $formFields['logo'] = $request->file('logo')->store('logos', 'public');
-//         // }
-
-//    //     $formFields['user_id'] = auth()->id();
-
-//         Car::create($formFields);
-
-//         return redirect('/')->with('message', 'Listing created successfully!');
     }
+
+
+    public function edit(Car $listing)
+    {
+        return view('listings.edit', [
+            'listing' => $listing
+        ]);
+    }
+
+    public function update(Request $request, Car $listing)
+    {
+        $formFields = $request->validate([
+            'name' => 'required',
+            'brand' => 'required',
+            'price' => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($request->hasFile('picture')) {
+            $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
+        }
+
+        $listing->update($formFields);
+
+        return back()->with('message', 'Voiture modifiée avec succès!');
+    }
+
+    public function delete(Car $listing) {
+        $listing->delete();
+
+        return redirect('/')->with('message', 'Voiture supprimée avec succès');
+    }
+
+    public function rent(Request $request, Car $listing) {
+
+        $formFields = $request->validate([
+           'fin_location' => 'required|date|after:yesterday'
+        ]);
+
+        $rental = Rental::create($formFields);
+
+        User::where('email', auth()->user()->email)->first()->update([
+            'rental_id' => $rental->id
+        ]);
+
+        $listing->update([
+            'rental_id' => $rental->id
+        ]);
+
+        return redirect('/')->with('message', 'Voiture louée !');
+    }
+
+  
 }

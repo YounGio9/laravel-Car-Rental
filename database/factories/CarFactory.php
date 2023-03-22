@@ -20,7 +20,8 @@ class CarFactory extends Factory
             'name' => $this->faker->name(),
             'brand' => $this->faker->firstName(),
             'price' => $this->faker->randomNumber(3, true) * 100,
-            'description' => $this->faker->paragraph(5)
+            'description' => $this->faker->paragraph(5),
+            // 'rentalId' => 0
         ];
     }
 }
