@@ -6,7 +6,7 @@
             <h2>Vous n'avez loué aucune voiture</h2>
         @else
             @foreach ($listings as $listing)
-                <x-cars-card :listing="$listing" />
+                <x-cars-card :listing="$listing" :rent="true" />
             @endforeach
         @endif
 

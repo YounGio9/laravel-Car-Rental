@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
          ]);
 
          \App\Models\Car::factory(5)->create();
-         \App\Models\Car::factory(5)->create([
+         \App\Models\Car::factory()->create([
             'user_id' => $user->id
          ]);
 

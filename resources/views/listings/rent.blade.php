@@ -1,10 +1,10 @@
 <x-layout>
     <div class="min-h-[65vh] bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
         <header class="text-center mb-12">
-            <h2 class="text-2xl font-bold uppercase mb-1">
-                Louer {{ $listing->name }}
+            <h2 class="text-2xl  font-bold uppercase mb-1">
+                Louer <span class="text-slate-700 font-bold"> {{ $listing->name }}</span> 
             </h2>
-            <p class="mb-4">Marque: {{$listing->brand}}</p>
+            <p class="mb-4">Marque: <span class="text-slate-700 font-bold">{{$listing->brand}}</span> </p>
         </header>
 
         <form action="/rent/{{ $listing->id }}" method="POST" class="grid gap-12">

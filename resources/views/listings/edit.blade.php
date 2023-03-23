@@ -65,10 +65,10 @@
 
             <div class="mb-6 flex items-center justify-between">
                 <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
-                    Créer le véhicule
+                    Modifier le véhicule
                 </button>
 
-                <a href="/" class="text-black ml-4 bg-slate-500 py-2 px-4 rounded text-white "> Back </a>
+                <a href="/" class="text-black ml-4 bg-slate-500 py-2 px-4 rounded text-white "> Retour </a>
             </div>
         </form>
     </div>

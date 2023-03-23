@@ -81,6 +81,8 @@ class CarController extends Controller
     }
 
     public function rent(Request $request, Car $listing) {
+        if(count(User::where('email', auth()->user()->email)->first()->cars) == 3)
+             return redirect('/')->with('message', 'Vous ne pouvez plus louer de voiture !');
 
         $formFields = $request->validate([
            'fin_location' => 'required|date|after:yesterday'

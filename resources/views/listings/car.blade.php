@@ -20,7 +20,7 @@
                     Description
                 </h3>
                 <div class="text-lg space-y-6">
-                    <p class="font-sans md:text-2xl md:w-full h-auto">
+                    <p class="md:text-2xl md:mb-16 md:w-full h-auto">
                         {{ $listing->description }}
                     </p>
 
@@ -30,7 +30,7 @@
                             class="w-1/2 text-center block md:w-[35%] mx-auto bg-slate-600 text-white py-2 font-bold rounded-xl hover:opacity-80"><i
                                 class="fa-solid fa-tag"></i>
                             Louer </a>
-                        <div class="py-6" x-show="rent">
+                        {{-- <div class="py-6" x-show="rent">
                             {{-- <template x-for="item in items">
                                 <div x-data="{
                                     get comp() {
@@ -49,13 +49,13 @@
                             {{-- <p class="py-6" x-text="'Louer pour: ' + active + ' jours'"></p> --}}
                                 
 
-                                <button type="submit"
+                                {{-- <button type="submit"
                                 class="w-1/2 text-center block md:w-[35%] mx-auto bg-slate-600 text-white py-2 font-bold rounded-xl hover:opacity-80">
                                     <i class="fa-solid fa-tag"></i>
                                     Payer
                                 </button>
                             </form>
-                        </div>
+                        </div>  --}}
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
             <div x-data="{ show: {{ auth()->user()->isAdmin == 1 }} }">
                 <x-card x-show="show" class="flex space-x-6 justify-center w-3/4 lg:w-1/2 m-auto mt-8">
                     <a href="/cars/{{ $listing->id }}/edit">
-                        <i class="fa-solid fa-pencil"></i> Edit
+                        <i class="fa-solid fa-pencil"></i> Modifier
                     </a>
 
                     <form action="/cars/{{ $listing->id }}" method="POST">
@@ -73,7 +73,7 @@
                         @method('DELETE')
 
                         <button class="text-red-500">
-                            <i class="fa-solid fa-trash"></i> Delete
+                            <i class="fa-solid fa-trash"></i> Supprimer
                         </button>
                     </form>
                 </x-card>

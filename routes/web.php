@@ -47,6 +47,8 @@ Route::post('/users', [UserController::class, 'store']);
 
 Route::post('/logout', [UserController::class, 'exit']);
 
+Route::post('/leave/{listing}', [RentalController::class, 'leave']);
+
 Route::post('/rent/{listing}', [CarController::class, 'rent'])->middleware('auth');
 
 Route::get('/login', [UserController::class, 'login'])->middleware('guest')->name('login');
