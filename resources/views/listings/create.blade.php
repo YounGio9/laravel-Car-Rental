@@ -66,7 +66,7 @@
                     Créer le véhicule
                 </button>
 
-                <a href="/" class="text-black ml-4 bg-slate-500 py-2 px-4 rounded text-white "> Back </a>
+                <a href="/" class="text-black ml-4 bg-slate-500 py-2 px-4 rounded text-white "> Retour </a>
             </div>
         </form>
     </div>
