@@ -64,6 +64,21 @@
         </header>
         <table class="w-2/3 m-auto table-auto rounded-sm">
             <tbody>
+                <tr class="border-gray-300 flex">
+                    <td class="px-4 grow py-8 border-t border-b border-gray-300 text-lg">
+
+                        Nom
+
+                    </td>
+                    <td class="px-4 grow py-8 border-t border-b border-gray-300 text-lg">
+
+                        Email
+
+                    </td>
+                    <td class="px-4 py-8 border-t text-left border-b border-gray-300 text-lg">
+                       <span class="invisible">Afficher le</span> Véhicules
+                    </td>
+                </tr>
                 @foreach ($users as $user)
                     <tr class="border-gray-300 flex">
                         <td class="px-4 grow py-8 border-t border-b border-gray-300 text-lg">
@@ -71,32 +86,25 @@
                             {{ $user->name }}
 
                         </td>
-                        <td class="px-4 py-8 border-t text-left border-b border-gray-300 text-lg">
-                            <p class="w-full text-right">Afficher les voitures<p>
+                        <td class="px-4 grow py-8 border-t border-b border-gray-300 text-lg">
 
-                            @foreach ($user->cars as $car)
-                                <div class="flex items-center justify-between">
-                                    <p class="mr-6"> Voiture: {{ $car->name }}</p>
-                                    <p  class="mr-6">Marque: {{ $car->brand }}</p>
-                                    <p>Loué depuis le: {{$car->created_at}}</p>
-                                </div>
-                            @endforeach
+                            {{ $user->email }}
+
                         </td>
-                        {{-- <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                        <a href="/cars/{{$listing->id}}/edit" class="text-blue-400 px-6 py-2 rounded-xl"><i
-                                class="fa-solid fa-pen-to-square"></i>
-                            Modifier</a>
-                    </td> --}}
-                        {{-- <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                        <form action="/cars/{{$listing->id}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="text-red-600">
-                                <i class="fa-solid fa-trash-can"></i>
-                                Supprimer
-                            </button>
-                        </form>
-                    </td> --}}
+                        <td x-data="{ visible: false }"
+                            class="px-4 py-8 border-t text-left border-b border-gray-300 text-lg">
+                            <a @click="visible = !visible" class="cursor-pointer hover:text-blue-500 w-full block text-right" x-text="(visible ? 'Masquer' : 'Afficher' ) + ' les voitures'"><a>
+
+                                    <div x-show="visible">
+                                        @foreach ($user->cars as $car)
+                                            <div class="flex items-center justify-between">
+                                                <p class="mr-6 my-4""> Voiture: {{ $car->name }}</p>
+                                                <p class="mr-6 my-4">Marque: {{ $car->brand }}</p>
+                                                <p class="my-4">Loué depuis le: {{ $car->created_at }}</p>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

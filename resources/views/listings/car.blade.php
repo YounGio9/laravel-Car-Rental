@@ -15,12 +15,12 @@
                 <div class="border border-gray-200 w-full mb-6"></div>
                 
             </div>
-            <div class="p-6">
+            <div class="p-6 md:w-2/3">
                 <h3 class="text-3xl font-bold mb-4">
                     Description
                 </h3>
                 <div class="text-lg space-y-6">
-                    <p>
+                    <p class="font-sans md:text-2xl md:w-full h-auto">
                         {{ $listing->description }}
                     </p>
 
@@ -47,20 +47,7 @@
                             </template> --}}
 
                             {{-- <p class="py-6" x-text="'Louer pour: ' + active + ' jours'"></p> --}}
-                                @csrf
-                                <div class="mb-6">
-                                    <label for="fin_location" class="inline-block text-lg mb-2">
-                                        Date de remise
-                                    </label>
-                                    <input type="datetime-local"
-                                        name="fin_location">
-
-                                    @error('fin_location')
-                                        <p class="text-red-500 text-xs mt-1">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>
+                                
 
                                 <button type="submit"
                                 class="w-1/2 text-center block md:w-[35%] mx-auto bg-slate-600 text-white py-2 font-bold rounded-xl hover:opacity-80">
