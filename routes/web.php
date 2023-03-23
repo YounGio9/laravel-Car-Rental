@@ -23,6 +23,8 @@ Route::get('/', [CarController::class, 'index']);
 
 Route::get('/cars/create', [CarController::class, 'create'])->middleware('auth');
 
+Route::get('/cars/manage', [CarController::class, 'manage'])->middleware('auth');
+
 Route::get('/cars/{listing}', [CarController::class, 'find']);
 
 Route::get('/cars/{listing}/edit', [CarController::class, 'edit'])->middleware('auth');
@@ -31,11 +33,11 @@ Route::put('/cars/{listing}', [CarController::class, 'update'])->middleware('aut
 
 Route::delete('/cars/{listing}', [CarController::class, 'delete'])->middleware('auth');
 
-Route::get('/cars/manage', [CarController::class, 'manage'])->middleware('auth');
-
 Route::post('/cars', [CarController::class, 'store'])->middleware('auth');
 
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
+
+Route::get('/rentals', [UserController::class, 'rentals']);
 
 Route::post('/users', [UserController::class, 'store']);
 

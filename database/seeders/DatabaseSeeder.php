@@ -15,19 +15,21 @@ class DatabaseSeeder extends Seeder
         // $rental = \App\Models\Rental::factory()->create([
         //     'fin_location' => '1988-07-06 13:58:00'
         // ]);
-         $rental = \App\Models\Rental::factory()->create();
+       
 
-         \App\Models\Car::factory(10)->create([
-            'rental_id' => $rental->id
-         ]);
+         
 
 
-         \App\Models\User::factory()->create([
+         $user = \App\Models\User::factory()->create([
             'name' => 'Giovani',
             'email' => 'giovanidesouza999@gmail.com',
             'password' => bcrypt('giovani'),
-            'rental_id' => $rental->id,
             'isAdmin' => 1
+         ]);
+
+         \App\Models\Car::factory(5)->create();
+         \App\Models\Car::factory(5)->create([
+            'user_id' => $user->id
          ]);
 
         // \App\Models\User::factory()->create([

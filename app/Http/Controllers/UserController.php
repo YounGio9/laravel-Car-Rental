@@ -56,4 +56,11 @@ class UserController extends Controller
 
         return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
     }
+
+
+    public function rentals() {
+        return view('listings.rentals', [
+            'listings' => User::where('email', auth()->user()->email)->first()->cars
+        ]);
+    }
 }

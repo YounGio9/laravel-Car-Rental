@@ -14,10 +14,16 @@ class Car extends Model
     public function scopeFilter($query, array $filters)
     {
         if ($filters['search'] ?? false)
-            $query->where('name', 'like', '%' . request('search') . '%');
+            $query->where('name', 'like', '%' . request('search') . '%')->where('rental_id', null);
+        else
+            $query->where('rental_id', null); 
     }
 
     public function rental() {
         return $this->belongsTo(Rental::class, 'rental_id');
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

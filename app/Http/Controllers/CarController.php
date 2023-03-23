@@ -88,15 +88,26 @@ class CarController extends Controller
 
         $rental = Rental::create($formFields);
 
-        User::where('email', auth()->user()->email)->first()->update([
+        $user = User::where('email', auth()->user()->email)->first();
+        $user->update([
             'rental_id' => $rental->id
         ]);
 
         $listing->update([
-            'rental_id' => $rental->id
+            'rental_id' => $rental->id,
+            'user_id' => $user->id
         ]);
 
         return redirect('/')->with('message', 'Voiture louée !');
+    }
+
+    public function manage() {
+        if(auth()->user()->isAdmin != 1)
+            return redirect('/')->with('message', 'Vous n\'etes pas un administrateur');
+
+        return view('listings.manage', [
+            'listings' => Car::latest()->filter(request(['search']))->paginate(5)
+        ]);
     }
 
   

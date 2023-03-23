@@ -58,16 +58,16 @@
 
 <body>
     <nav class="flex justify-between items-center mb-4">
-        <a href="/"><img class="w-24" src="{{ asset('images/logo.png') }}" alt="" class="logo" /></a>
-        <ul class="flex space-x-6 mr-6 text-lg">
+        <a href="/"><img class="w-24 mr-6" src="{{ asset('images/logo.png') }}" alt="" class="logo" /></a>
+        
             @auth
+            <ul class="flex space-x-6 mr-6 text-lg w-full">
             <li>
-                <span class="font-bold uppercase">
-                    Bienvenue {{auth()->user()->name}}
-                </span>
+                <a href="/rentals" class="hover:text-slate-600"><i class="fa-solid fa-car"></i>
+                   Mes locations</a>
             </li>
             <li>
-                <a href="/login" class="hover:text-laravel"><i class="fa-solid fa-gear"></i>
+                <a href="/cars/manage" class="hover:text-slate-600"><i class="fa-solid fa-gear"></i>
                     Administrer les voitures</a>
             </li>
             <li>
@@ -78,16 +78,24 @@
                     </button>
                 </form>
             </li>
+            <li class="grow text-right">
+                <span class="font-bold uppercase ">
+                    Bienvenue {{auth()->user()->name}}
+                </span>
+            </li>
+            </ul>
             @else
+            <ul class="flex space-x-6 mr-6 text-lg">
             <li>
-                <a href="/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
+                <a href="/register" class="hover:text-slate-600"><i class="fa-solid fa-user-plus"></i> Inscription</a>
             </li>
             <li>
-                <a href="/login" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Login</a>
+                <a href="/login" class="hover:text-slate-600"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    Connexion</a>
             </li>
-            @endauth
         </ul>
+            @endauth
+        
     </nav>
 
     <main>
