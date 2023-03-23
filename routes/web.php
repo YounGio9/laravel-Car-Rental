@@ -33,7 +33,7 @@ Route::get('/cars/{listing}/edit', [CarController::class, 'edit'])->middleware('
 
 Route::put('/cars/{listing}', [CarController::class, 'update'])->middleware('auth');
 
-Route::get('/rental/{listing}', [RentalController::class, 'show']);
+Route::get('/rental/{listing}', [RentalController::class, 'show'])->middleware('auth');
 
 Route::delete('/cars/{listing}', [CarController::class, 'delete'])->middleware('auth');
 

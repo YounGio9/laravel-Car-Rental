@@ -45,7 +45,7 @@
             <div class="mt-8">
                 <p>
                    Vous n'avez pas de compte ?
-                    <a href="/register" class="text-bg-slate-500">Inscription</a>
+                    <a href="/register" class="font-bold text-bg-slate-500">Inscription</a>
                 </p>
             </div>
         </form>
