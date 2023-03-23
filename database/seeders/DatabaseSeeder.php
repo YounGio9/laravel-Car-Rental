@@ -15,10 +15,6 @@ class DatabaseSeeder extends Seeder
         // $rental = \App\Models\Rental::factory()->create([
         //     'fin_location' => '1988-07-06 13:58:00'
         // ]);
-       
-
-         
-
 
          $user = \App\Models\User::factory()->create([
             'name' => 'Giovani',
@@ -28,13 +24,6 @@ class DatabaseSeeder extends Seeder
          ]);
 
          \App\Models\Car::factory(5)->create();
-         \App\Models\Car::factory()->create([
-            'user_id' => $user->id
-         ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }
