@@ -2,7 +2,10 @@
 
 <x-card>
     <div class="flex">
-        <img class="hidden w-48 mr-6 md:block" src="{{$listing->picture ? asset('storage/' . $listing->picture) : asset('images/noimage.jpeg') }}" alt="" />
+        <a href="/cars/{{ $listing->id }}">
+            <img class="hidden w-48 mr-6 md:block" src="{{$listing->picture ? asset('storage/' . $listing->picture) : asset('images/noimage.jpeg') }}" alt="" />
+        </a>
+       
         <div>
             <h3 class="text-2xl">
                 <a href="/cars/{{ $listing->id }}">{{ $listing->name }}</a>

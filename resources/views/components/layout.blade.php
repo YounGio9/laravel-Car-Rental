@@ -58,44 +58,45 @@
 
 <body>
     <nav class="flex justify-between items-center mb-4">
-        <a href="/"><img class="w-24 mr-6" src="{{ asset('images/logo.png') }}" alt="" class="logo" /></a>
-        
-            @auth
+        <a href="/"><img class="w-24 mr-6" src="{{ asset('images/logo.png') }}" alt=""
+                class="logo" /></a>
+
+        @auth
             <ul class="flex space-x-6 mr-6 text-lg w-full">
-            <li>
-                <a href="/rentals" class="hover:text-slate-600"><i class="fa-solid fa-car"></i>
-                   Mes locations</a>
-            </li>
-            <li>
-                <a href="/cars/manage" class="hover:text-slate-600"><i class="fa-solid fa-gear"></i>
-                    Administrer les voitures</a>
-            </li>
-            <li>
-                <form class="inline" method="POST" action="/logout">
-                    @csrf
-                    <button type="submit">
-                        <i class="fa-solid fa-door-open"></i> Deconnexion
-                    </button>
-                </form>
-            </li>
-            <li class="grow text-right">
-                <span class="font-bold uppercase ">
-                    Bienvenue {{auth()->user()->name}}
-                </span>
-            </li>
+                <li>
+                    <a href="/rentals" class="hover:text-slate-600"><i class="fa-solid fa-car"></i>
+                        Mes locations</a>
+                </li>
+                <li>
+                    <a href="/cars/manage" class="hover:text-slate-600"><i class="fa-solid fa-gear"></i>
+                        Administrer les voitures</a>
+                </li>
+                <li>
+                    <form class="inline" method="POST" action="/logout">
+                        @csrf
+                        <button type="submit">
+                            <i class="fa-solid fa-door-open"></i> Deconnexion
+                        </button>
+                    </form>
+                </li>
+                <li class="grow text-right">
+                    <span class="font-bold uppercase ">
+                        Bienvenue {{ auth()->user()->name }}
+                    </span>
+                </li>
             </ul>
-            @else
+        @else
             <ul class="flex space-x-6 mr-6 text-lg">
-            <li>
-                <a href="/register" class="hover:text-slate-600"><i class="fa-solid fa-user-plus"></i> Inscription</a>
-            </li>
-            <li>
-                <a href="/login" class="hover:text-slate-600"><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Connexion</a>
-            </li>
-        </ul>
-            @endauth
-        
+                <li>
+                    <a href="/register" class="hover:text-slate-600"><i class="fa-solid fa-user-plus"></i> Inscription</a>
+                </li>
+                <li>
+                    <a href="/login" class="hover:text-slate-600"><i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        Connexion</a>
+                </li>
+            </ul>
+        @endauth
+
     </nav>
 
     <main>
@@ -106,7 +107,6 @@
         class="relative bottom-0 left-0 w-full flex items-center justify-start font-bold bg-slate-500 text-white h-24 mt-24 opacity-90 md:justify-center">
         <p class="ml-2 w-56 md:w-auto lg:w-auto">Copyright &copy; 2022, All Rights reserved</p>
 
-        <a href="/cars/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
     </footer>
     <x-flash-message />
 </body>

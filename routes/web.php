@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\RentalController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Car;
+use App\Models\Rental;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,8 @@ Route::get('/cars/{listing}', [CarController::class, 'find']);
 Route::get('/cars/{listing}/edit', [CarController::class, 'edit'])->middleware('auth');
 
 Route::put('/cars/{listing}', [CarController::class, 'update'])->middleware('auth');
+
+Route::get('/rental/{listing}', [RentalController::class, 'show']);
 
 Route::delete('/cars/{listing}', [CarController::class, 'delete'])->middleware('auth');
 

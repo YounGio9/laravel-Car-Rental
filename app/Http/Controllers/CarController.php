@@ -106,7 +106,8 @@ class CarController extends Controller
             return redirect('/')->with('message', 'Vous n\'etes pas un administrateur');
 
         return view('listings.manage', [
-            'listings' => Car::latest()->filter(request(['search']))->paginate(5)
+            'listings' => Car::latest()->filter(request(['search']))->paginate(4),
+            'users' => \App\Models\User::where('rental_id', '<>', null)->get()
         ]);
     }
 

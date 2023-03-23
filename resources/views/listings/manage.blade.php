@@ -64,6 +64,12 @@
             {{$listings->links()}}
         </div>
 
+        <header>
+            <h1 class="text-3xl text-center font-bold my-6 uppercase">
+                Individus ayant loué une voiture 
+            </h1>
+        </header>
+
     </x-card>
 
 </x-layout>

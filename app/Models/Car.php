@@ -16,7 +16,7 @@ class Car extends Model
         if ($filters['search'] ?? false)
             $query->where('name', 'like', '%' . request('search') . '%')->where('rental_id', null);
         else
-            $query->where('rental_id', null); 
+            $query->where('rental_id' , null); 
     }
 
     public function rental() {
