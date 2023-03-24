@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('picture')->nullable();
             $table->string('brand');
+            $table->integer('places');
+            $table->integer('kilometrage');
             $table->foreignId('rental_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
             $table->longText('description');

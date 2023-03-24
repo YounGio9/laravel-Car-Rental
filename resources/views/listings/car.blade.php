@@ -16,6 +16,8 @@
                 
             </div>
             <div class="p-6 md:w-2/3">
+                <div class="text-2xl w-full mb-5">Nombre de places:  {{$listing->places}} <i class="fa-solid fa-user-group"></i> </div>
+                <div class="text-2xl m-auto mb-12">Kilometrage:  {{$listing->kilometrage}} km/h </div>
                 <h3 class="text-3xl font-bold mb-4">
                     Description
                 </h3>

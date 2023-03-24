@@ -13,17 +13,21 @@
                 <a href="/cars/{{ $listing->id }}">{{ $listing->name }}</a>
             </h3>
             <div class="text-xl font-bold mb-4">{{ $listing->brand }}</div>
+
+            <div class="flex w-full justify-between">
+                <div class="text-xl font-bold mb-4 mr-6"><i class="fa-solid fa-user-group"></i> {{ $listing->places }}</div>
+                <div class="text-xl italic mb-4">{{ $listing->kilometrage }} Km/h</div>
+            </div>
             <div class="text-lg mt-4">
                 <i class="fa-solid fa-tag"></i> {{ $listing->price }} FCFA
             </div>
             @if (isset($rent))
-            <form action="/leave/{{$listing->id}}" method="POST">
-                @csrf
-                <button type="submit" class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
-                    Rendre le véhicule
-                </button>
-            </form>
-                
+                <form action="/leave/{{ $listing->id }}" method="POST">
+                    @csrf
+                    <button type="submit" class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">
+                        Rendre le véhicule
+                    </button>
+                </form>
             @endif
 
         </div>

@@ -39,6 +39,24 @@
             </div>
 
             <div class="mb-6">
+                <label for="places" class="inline-block text-lg mb-2">Nombre de places</label>
+                <input type="number" class="border border-gray-200 rounded p-2 w-full" name="places"
+                    placeholder="4" value="{{ old('places') }}" />
+                @error('places')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
+                <label for="kilometrage" class="inline-block text-lg mb-2">Kilometrage (en km/h)</label>
+                <input type="number" class="border border-gray-200 rounded p-2 w-full" name="kilometrage"
+                    placeholder="67" value="{{ old('kilometrage') }}" />
+                @error('kilometrage')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div class="mb-6">
                 <label for="logo" class="inline-block text-lg mb-2">
                     Image
                 </label>

@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('listings.cars', [
             'heading' => 'Cars',
             'listings' => Car::latest()->filter(request(['search']))->paginate(6)
@@ -34,7 +35,10 @@ class CarController extends Controller
             'name' => 'required',
             'brand' => 'required',
             'price' => 'required',
-            'description' => 'required'
+            'places' => 'required|max:1',
+            'kilometrage' => 'required|min:2',
+            'description' => 'required',
+            'picture' => 'required'
         ]);
 
         if ($request->hasFile('picture')) {
@@ -62,6 +66,8 @@ class CarController extends Controller
             'name' => 'required',
             'brand' => 'required',
             'price' => 'required',
+            'places' => 'required|max:1',
+            'kilometrage' => 'required|min:2',
             'description' => 'required'
         ]);
 
@@ -74,18 +80,20 @@ class CarController extends Controller
         return back()->with('message', 'Voiture modifiée avec succès!');
     }
 
-    public function delete(Car $listing) {
+    public function delete(Car $listing)
+    {
         $listing->delete();
 
         return redirect('/')->with('message', 'Voiture supprimée avec succès');
     }
 
-    public function rent(Request $request, Car $listing) {
-        if(count(User::where('email', auth()->user()->email)->first()->cars) == 3)
-             return redirect('/')->with('message', 'Vous ne pouvez plus louer de voiture !');
+    public function rent(Request $request, Car $listing)
+    {
+        if (count(User::where('email', auth()->user()->email)->first()->cars) == 3)
+            return redirect('/')->with('message', 'Vous ne pouvez plus louer de voiture !');
 
         $formFields = $request->validate([
-           'fin_location' => 'required|date|after:yesterday'
+            'fin_location' => 'required|date|after:yesterday'
         ]);
 
         $rental = Rental::create($formFields);
@@ -103,8 +111,9 @@ class CarController extends Controller
         return redirect('/')->with('message', 'Voiture louée !');
     }
 
-    public function manage() {
-        if(auth()->user()->isAdmin != 1)
+    public function manage()
+    {
+        if (auth()->user()->isAdmin != 1)
             return redirect('/')->with('message', 'Vous n\'etes pas un administrateur');
 
         return view('listings.manage', [
@@ -112,6 +121,4 @@ class CarController extends Controller
             'users' => \App\Models\User::where('rental_id', '<>', null)->get()
         ]);
     }
-
-  
 }
